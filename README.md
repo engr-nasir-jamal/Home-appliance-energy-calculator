@@ -1,3 +1,3 @@
 # Home Appliance Energy Cost Calculator
 
-A Python application that calculates household appliance energy consumption and estimated monthly electricity cost.
+A python application that calculates household appliances daily and monthly energy consumption and estimates  its daily and monthly monthly cost.
