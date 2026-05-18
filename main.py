@@ -31,6 +31,11 @@ n = int(input("\nHow many appliances do you use? "))
 
 for i in range(n):
     index = int(input("Select appliance number: "))
+
+    if index < 0 or index >= len(appliance_list):
+        print("Invalid selection. Try again.")
+        continue
+
     quantity = int(input("Quantity: "))
     hours = float(input("Hours per day: "))
 
