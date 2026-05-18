@@ -1,7 +1,7 @@
 import csv
 from appliance import Appliance
 
-devices = []
+appliance_list = []
 
 file = open("data.csv", "r")
 reader = csv.reader(file)
@@ -9,12 +9,18 @@ reader = csv.reader(file)
 for row in reader:
     name = row[0]
     power = float(row[1])
-    hours = float(row[2])
 
-    device = Appliance(name, power, hours)
-    devices.append(device)
+    device = Appliance(name, power, 0)
+    appliance_list.append(device)
 
 file.close()
+
+print("\nAvailable Appliances:\n")
+
+i = 0
+for device in appliance_list:
+    print(i, device.name, "-", device.power_watts, "W")
+    i = i + 1
 
 from calculator import daily_energy, monthly_energy, monthly_cost
 results = []

@@ -1,12 +1,15 @@
-Fan,75,8
-Refrigerator,200,24
-Laptop,65,5
-TV,120,4
-Electric Stove,2000,2
-Electric Kettle,1500,1
-Mobile Charger,10,5
-Ceiling Light,20,6
-Electric Heater,1500,5
-Microwave,1200,0.5
-Washing Machine,500,1
-Air Conditioner,1500,6
+Fan,75
+Refrigerator,200
+TV,120
+Laptop charger,65
+Electric Stove,1000
+Electric Kettle,1500
+Mobile Charger,10
+Ceiling Light,60
+Electric Heater,2000
+Microwave,1200
+Washing Machine,500
+Air Conditioner,2500
+Hair Dryer,1800
+Baking Oven,2000
+Table lamp,40
