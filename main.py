@@ -7,9 +7,9 @@ file = open("data.csv", "r")
 reader = csv.reader(file)
 
 for row in reader:
-    name = row["name"]
-    power = float(row["power_watts"])
-    hours = float(row["hours_per_day"])
+    name = row[0]
+    power = float(row[1])
+    hours = float(row[2])
 
     device = Appliance(name, power, hours)
     devices.append(device)
