@@ -1,75 +1,78 @@
 import csv
 from appliance import Appliance
 
-# STEP 1: Upload appliances from CSV file
+# STEP 1: Load appliances from CSV
 
 appliance_list = []
 
 file = open("data.csv", "r")
 reader = csv.reader(file)
 
-# Read each row from CSV and create Appliance objects
 for row in reader:
-    name = row[0]                                       # appliance name
-    power = float(row[1])                               # power in watts
+    name = row[0]
+    power = float(row[1])
 
-# Create object with 0 hours (hours will come from user input later)
     device = Appliance(name, power, 0)
     appliance_list.append(device)
 
 file.close()
 
-# STEP 2: Display available appliances
+# STEP 2: Show available appliances
 
 print("\nAvailable Appliances:\n")
+
 i = 0
 for device in appliance_list:
     print(i, device.name, "-", device.power_watts, "W")
-    i = i + 1
+    i += 1
 
-# STEP 3: User selects appliances
+# STEP 3: User input (no duplicates allowed)
 
-selected_devices = []
+selected_devices = {}
+used_indexes = set()
 
-# How many different appliances user wants to calculate for
-n = int(input("\nHow many appliances do you use? "))
+n = int(input("\nHow many different appliances do you want to add? "))
 
 for i in range(n):
-    index = int(input("Select appliance number: "))
 
-# Validate index to avoid invalid selection
-    if index < 0 or index >= len(appliance_list):
-        print("Invalid selection. Try again.")
-        continue
+    while True:
+        print(str(i + 1) + ": Select appliance number")
+        index = int(input())
 
-    quantity = int(input("Quantity: "))                 # number of same devices
-    hours = float(input("Hours per day: "))             # usage per day
+        if index < 0 or index >= len(appliance_list):
+            print("Invalid selection. Try again.")
+            continue
 
-    device = appliance_list[index]
+        if index in used_indexes:
+            print("Already selected. Choose another appliance.")
+            continue
 
-# Store selected appliance with user inputs
-    selected_devices.append((device, quantity, hours))
+        used_indexes.add(index)
+        break
 
-# STEP 4: Energy + cost calculations
+    quantity = int(input("Quantity: "))
+    hours = float(input("Hours per day: "))
+
+    selected_devices[index] = (quantity, hours)
+
+# STEP 4: Calculations
 
 from calculator import daily_energy, monthly_energy, monthly_cost
 
 results = []
 
-for item in selected_devices:
-    device = item[0]
-    quantity = item[1]
-    hours = item[2]
+for index, values in selected_devices.items():
+    device = appliance_list[index]
+    quantity = values[0]
+    hours = values[1]
 
-# Calculate energy usage
     daily = daily_energy(device.power_watts * quantity, hours)
     monthly = monthly_energy(daily)
     cost = monthly_cost(monthly)
 
-# Store final result
     results.append((device.name, monthly, cost))
 
-# STEP 5: Display final report
+# STEP 5: Output report
 
 print("\nEnergy Report")
 print("----------------")
