@@ -25,3 +25,12 @@ for device in devices:
     cost = monthly_cost(monthly)
 
     results.append((device.name, monthly, cost))
+
+print("Energy Report")
+print("----------------")
+
+for result in results:
+    print("Device Name:", result[0])
+    print("Monthly Energy:", round(result[1], 2), "kWh")
+    print("Monthly Cost:", round(result[2], 2), "Euro")
+    print("----------------")
