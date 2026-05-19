@@ -50,7 +50,14 @@ for i in range(n):
         used_indexes.add(index)
         break
 
-    quantity = int(input("Quantity: "))
+    while True:
+        quantity = int(input("Quantity: "))
+
+        if quantity <= 0:
+            print("Quantity must be greater than 0.")
+            continue
+
+        break
 
     while True:
         hours = float(input("Hours per day: "))
