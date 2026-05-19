@@ -31,7 +31,7 @@ for device in appliance_list:
 selected_devices = {}
 used_indexes = set()
 
-n = int(input("\nHow many different appliances do you want to add? "))
+n = int(input("\nHow many appliances do you want to add? "))
 
 for i in range(n):
 
@@ -51,7 +51,15 @@ for i in range(n):
         break
 
     quantity = int(input("Quantity: "))
-    hours = float(input("Hours per day: "))
+
+    while True:
+        hours = float(input("Hours per day: "))
+
+        if hours < 0 or hours > 24:
+            print("Hours must be between 0 and 24.")
+            continue
+
+        break
 
     selected_devices[index] = (quantity, hours)
 
