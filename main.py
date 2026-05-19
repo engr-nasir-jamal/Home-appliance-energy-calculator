@@ -72,7 +72,7 @@ for i in range(n):
 
 # STEP 4: Calculations
 
-from calculator import daily_energy, monthly_energy, monthly_cost
+from calculator import daily_energy, daily_cost, monthly_energy, monthly_cost
 
 results = []
 
@@ -82,18 +82,38 @@ for index, values in selected_devices.items():
     hours = values[1]
 
     daily = daily_energy(device.power_watts * quantity, hours)
+    daily_cost_value = daily_cost(daily)
     monthly = monthly_energy(daily)
     cost = monthly_cost(monthly)
 
-    results.append((device.name, monthly, cost))
+    results.append((device.name, daily, daily_cost_value, monthly, cost))
 
 # STEP 5: Output report
 
 print("\nEnergy Report")
 print("----------------")
 
+total_daily_energy = 0
+total_daily_cost = 0
+total_monthly_energy = 0
+total_monthly_cost = 0
+
 for result in results:
     print("Device Name:", result[0])
-    print("Monthly Energy:", round(result[1], 2), "kWh")
-    print("Monthly Cost:", round(result[2], 2), "Euro")
+    print("Daily Energy:", round(result[1], 2), "kWh")
+    print("Daily Cost:", round(result[2], 2), "Euro")
+    print("Monthly Energy:", round(result[3], 2), "kWh")
+    print("Monthly Cost:", round(result[4], 2), "Euro")
     print("----------------")
+
+    total_daily_energy += result[1]
+    total_daily_cost += result[2]
+    total_monthly_energy += result[3]
+    total_monthly_cost += result[4]
+
+print("\nTotal Energy Summary")
+print("----------------")
+print("Total Daily Energy:", round(total_daily_energy, 2), "kWh")
+print("Total Daily Cost:", round(total_daily_cost, 2), "Euro")
+print("Total Monthly Energy:", round(total_monthly_energy, 2), "kWh")
+print("Total Monthly Cost:", round(total_monthly_cost, 2), "Euro")
