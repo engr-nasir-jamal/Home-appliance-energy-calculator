@@ -100,9 +100,9 @@ total_monthly_cost = 0
 
 for result in results:
     print("Device Name:", result[0])
-    print("Daily Energy:", round(result[1], 2), "kWh")
+    print("Daily Energy Consumption:", round(result[1], 2), "kWh")
     print("Daily Cost:", round(result[2], 2), "Euro")
-    print("Monthly Energy:", round(result[3], 2), "kWh")
+    print("Monthly Energy Consumption:", round(result[3], 2), "kWh")
     print("Monthly Cost:", round(result[4], 2), "Euro")
     print("----------------")
 
@@ -111,9 +111,9 @@ for result in results:
     total_monthly_energy += result[3]
     total_monthly_cost += result[4]
 
-print("\nTotal Energy Summary")
+print("\nOverall Summary")
 print("----------------")
-print("Total Daily Energy:", round(total_daily_energy, 2), "kWh")
+print("Total Daily Energy Consumption:", round(total_daily_energy, 2), "kWh")
 print("Total Daily Cost:", round(total_daily_cost, 2), "Euro")
-print("Total Monthly Energy:", round(total_monthly_energy, 2), "kWh")
+print("Total Monthly Energy Consumption:", round(total_monthly_energy, 2), "kWh")
 print("Total Monthly Cost:", round(total_monthly_cost, 2), "Euro")
