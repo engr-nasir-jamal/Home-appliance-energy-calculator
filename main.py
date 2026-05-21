@@ -111,6 +111,14 @@ for result in results:
     total_monthly_energy += result[3]
     total_monthly_cost += result[4]
 
+Highest_device = max(results, key=lambda x: x[3])
+
+print("\nHighest Energy Consumption")
+print("----------------")
+print("Device Name:", Highest_device[0])
+print("Monthly Energy Consumption:", round(Highest_device[3], 2), "kWh")
+print("Monthly Cost:", round(Highest_device[4], 2), "Euro")
+
 print("\nOverall Summary")
 print("----------------")
 print("Total Daily Energy Consumption:", round(total_daily_energy, 2), "kWh")
