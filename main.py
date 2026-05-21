@@ -141,7 +141,7 @@ for result in results:
 
     json_data.append(device_data)
 
-    json_file = open("report.json", "w")
+json_file = open("report.json", "w")
 
 json.dump(json_data, json_file, indent=4)
 
