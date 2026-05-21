@@ -125,3 +125,26 @@ print("Total Daily Energy Consumption:", round(total_daily_energy, 2), "kWh")
 print("Total Daily Cost:", round(total_daily_cost, 2), "Euro")
 print("Total Monthly Energy Consumption:", round(total_monthly_energy, 2), "kWh")
 print("Total Monthly Cost:", round(total_monthly_cost, 2), "Euro")
+
+import json
+
+json_data = []
+
+for result in results:
+    device_data = {
+        "device_name": result[0],
+        "daily_energy_kwh": round(result[1], 2),
+        "daily_cost_euro": round(result[2], 2),
+        "monthly_energy_kwh": round(result[3], 2),
+        "monthly_cost_euro": round(result[4], 2)
+    }
+
+    json_data.append(device_data)
+
+    json_file = open("report.json", "w")
+
+json.dump(json_data, json_file, indent=4)
+
+json_file.close()
+
+print("\nJSON report saved successfully.")

@@ -1,0 +1,16 @@
+[
+    {
+        "device_name": "Refrigerator",
+        "daily_energy_kwh": 4.8,
+        "daily_cost_euro": 1.68,
+        "monthly_energy_kwh": 144.0,
+        "monthly_cost_euro": 50.4
+    },
+    {
+        "device_name": "Vacuum Cleaner",
+        "daily_energy_kwh": 0.16,
+        "daily_cost_euro": 0.06,
+        "monthly_energy_kwh": 4.8,
+        "monthly_cost_euro": 1.68
+    }
+]
